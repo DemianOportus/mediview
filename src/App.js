@@ -7,6 +7,7 @@ import Search from "./components/search";
 import AddPatient from "./pages/addPatient";
 import ShowPatientFile from "./pages/showPatientFile";
 import Navbar from "./components/navbar";
+import AddPrescription from "./pages/addPrescription";
 
 function App() {
   return (
@@ -21,6 +22,12 @@ function App() {
           <div>
             <Navbar/>
             <ShowPatientFile />
+          </div>
+          } 
+        />
+        <Route path="add-prescription/:id" element={
+          <div>
+            <AddPrescription/>
           </div>
           } 
         />

@@ -48,13 +48,13 @@ const Search = () => {
             {patients.map((patient, index) => (
                 <tr key={index}>
                 <td>
-                    {patient.name}
-                    <a href={"/show-patient-file/"+patient.id}>
-                        <img
-                            alt=": View File"
-                            src={magnifyingGlass}
-                            className="object-scale-down h-12 w-12 m-auto"
-                        />
+                    <a className="flex items-center gap-1" href={"/show-patient-file/"+patient.id}>
+                      <img
+                        alt=": View File"
+                        src={magnifyingGlass}
+                        className="object-scale-down h-6 w-6"
+                      />
+                     {patient.name}
                     </a>
                 </td>
                 </tr>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import patientFiles from "../components/patientFiles";
+import { Link } from "react-router-dom";
 
 function ShowPatientFile() {
   const { id } = useParams(); 
@@ -40,10 +41,12 @@ function ShowPatientFile() {
                     <li>Frequency: {patientFile.frequency}</li>
                     <li>Start date: {patientFile.startDate}</li>
                     <li>End date: {patientFile.endDate}</li>
-                    <button 
-                        className="grid-row-end bg-[#3D6189] w-[220px] text-white py-[6px] mt-6 mb-5">
-                        Add prescription +
-                    </button>
+                    <Link to={`/add-prescription/${patientFile.id}`}>
+                      <button 
+                          className="grid-row-end bg-[#3D6189] w-[220px] text-white py-[6px] mt-6 mb-5">
+                          Add prescription +
+                      </button>
+                    </Link>
                 </div>
             </div>
         </div>

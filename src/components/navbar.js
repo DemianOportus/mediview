@@ -4,7 +4,7 @@ function Navbar(){
     return(
         <div>
             <div className="flex justify-between mx-12 my-2 items-center">
-                <h1 className="text-[40px] font-bold">MediView</h1>
+                <a href="/search"><h1 className="text-[40px] font-bold">MediView</h1></a>
                 <div>
                     <Link to="/add-a-patient" className="mr-12">
                         <button 
