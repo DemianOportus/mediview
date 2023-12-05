@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import Navbar from './navbar';
+import magnifyingGlass from '../images/magnifying-glass-icon-13.png'
+import patientFiles from "../components/patientFiles";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
 
-  const patientsData = [
+  /** const patientsData = [
     { name: "John Doe"},
     { name: "John Smith"},
     { name: "Joe Somebody"},
+  ]; **/
 
-  ];
-
-  const [patients, setPatients] = useState(patientsData);
+  const patientList = Array.from(patientFiles);
+  const [patients, setPatients] = useState(patientList);
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
 
-    const filteredPatients = patientsData.filter((patient) =>
+    const filteredPatients = patientList.filter((patient) =>
       patient.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
 
@@ -45,7 +47,16 @@ const Search = () => {
             <tbody className='text-center'>
             {patients.map((patient, index) => (
                 <tr key={index}>
-                <td>{patient.name}</td>
+                <td>
+                    {patient.name}
+                    <a href={"/show-patient-file/"+patient.id}>
+                        <img
+                            alt=": View File"
+                            src={magnifyingGlass}
+                            className="object-scale-down h-12 w-12 m-auto"
+                        />
+                    </a>
+                </td>
                 </tr>
             ))}
             </tbody>
