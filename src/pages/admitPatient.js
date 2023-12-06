@@ -1,19 +1,86 @@
 import { Link } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+import patientFiles from "../components/patientFiles";
 
 function AdmitPatient() {
+    const [availableRooms, setAvailableRooms] = useState([
+        { division: "A", rooms: ["1", "2", "3"] },
+        { division: "B", rooms: ["1", "2", "3"] },
+        { division: "C", rooms: ["1", "2", "3"] },
+    ]);
+
+    const getOccupiedBeds = () => {
+        const occupiedBeds = {};
+        patientFiles.forEach((patient) => {
+            if (patient.dateOfDischarge === "") {
+                const key = ${patient.division}-${patient.room}-${patient.bed};
+                occupiedBeds[key] = true;
+            }
+        });
+        return occupiedBeds;
+    };
+
+    const occupiedBeds = getOccupiedBeds();
+
     return(
-        <div className="mt-20">
-            <h1 className="font-bold text-[50px] text-center mb-8">Add a patient</h1>
-            <form className="md:grid md:grid-cols-1 md:place-items-center xl:mx-36">
-                <div className="order-1">
-                    <label>Room number</label><br/>
-                    <input type="name"/>
+        <div className="mt-20 text-center">
+            <h1 className="font-bold text-[50px] text-center mb-8">Admit a patient</h1>
+            <form>
+                <div>
+                    <label>Division</label><br/>
+                    <input type="text"/>
                 </div>
-                <div className="order-3">
+                <div>
+                    <label>Room number</label><br/>
+                    <input type="text"/>
+                </div>
+                <div>
                     <label>Bed number</label><br/>
-                    <input type="address"/>
+                    <input type="text"/>
                 </div>
             </form>
+            <h2 className="text-center mt-5">Available rooms and beds</h2>
+            <p className="mb-5 text-[15px]">Available beds are black. Unavailable beds are red.</p>
+            <table className="m-auto">
+                <thead>
+                    <tr>
+                        <th>Division</th>
+                        <th>Room</th>
+                        <th>Beds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {availableRooms.map((divisionRooms) => (
+                        <React.Fragment key={divisionRooms.division}>
+                            {divisionRooms.rooms.map((room) => (
+                                <tr key={room}>
+                                    <td>{divisionRooms.division}</td>
+                                    <td>{room}</td>
+                                    <td>
+                                        {[1, 2, 3].map((bed) => {
+                                            const bedKey = ${divisionRooms.division}-${room}-${bed};
+                                            const isOccupied = occupiedBeds[bedKey];
+
+                                            return (
+                                                <span
+                                                    key={bed}
+                                                    style={{
+                                                        color: isOccupied ? "red" : "black",
+                                                        marginRight: "5px",
+                                                    }}
+                                                >
+                                                    Bed {bed}{" "}
+                                                </span>
+                                            );
+                                        })}
+                                    </td>
+                                </tr>
+                            ))}
+                        </React.Fragment>
+                    ))}
+                </tbody>
+            </table>
             <Link to="/search">
                 <div className="text-center">
                 <button 
