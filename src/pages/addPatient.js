@@ -6,22 +6,18 @@ function AddPatient() {
             <h1 className="font-bold text-[50px] text-center mb-8">Add a patient</h1>
             <form className="md:grid md:grid-cols-2 md:place-items-center xl:mx-36">
                 <div className="order-1">
-                    <label>Patient's first name</label><br/>
+                    <label>Patient's name</label><br/>
                     <input type="name"/>
                 </div>
                 <div className="order-3">
-                    <label>Patient's last name</label><br/>
-                    <input type="name"/>
-                </div>
-                <div className="order-5">
                     <label>Patient's address</label><br/>
                     <input type="address"/>
                 </div>
-                <div className="order-7">
+                <div className="order-5">
                     <label>Patient's phone number</label><br/>
                     <input type="tel"/>
                 </div>
-                <div className="order-9">
+                <div className="order-7">
                     <label>Patient's date of birth</label><br/>
                     <input type="date"/>
                 </div>

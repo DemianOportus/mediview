@@ -1,36 +1,62 @@
-
 const patientFiles = [
     {
-        id:1,
+        id: 1,
         name: "John Doe",
+        address: "123 Street",
+        phoneNumber: "(123)456-7890",
+        dateOfBirth: "2000-12-01",
+        gender: "male",
+        hasADoctorYesOrNo: "yes",
+        doctorEmail: "janedoe@doctor.com",
+        insuranceNumber: "12345",
+        medicalProxy: "Mary Doe",
+        dateOfAdmission: "2023/08/01",
         division: "A",
         room: "A-12",
         bed: "3",
-        durationOfStay: "24 hours",
+        dateOfDischarge: "2023/08/03",
+        durationOfStay: "48 hours",
         medicalCondition: "diabetes",
-        medicationsPrescribed: "insulin",
-        methodOfAdministration: "intravenous",
-        dosage: "20mg",
-        frequency: "6 hours",
-        startDate: "1/1/2023",
-        endDate: "1/12/2023",
+        medicationsPrescribed: [
+            {
+                medicationName: "insulin",
+                methodOfAdministration: "intravenous",
+                dosage: "20mg",
+                frequency: "6 hours",
+                startDate: "1/1/2023",
+                endDate: "1/12/2023",
+            }
+        ],
     },
     {
-        id:2,
+        id: 2,
         name: "John Smith",
+        address: "456 Avenue",
+        phoneNumber: "(987)654-3210",
+        dateOfBirth: "1998-10-01",
+        gender: "male",
+        hasADoctorYesOrNo: "yes",
+        doctorEmail: "joesomebody@doctor.com",
+        insuranceNumber: "67890",
+        medicalProxy: "Mary Smith",
+        dateOfAdmission: "2023/10/01",
         division: "B",
         room: "B-8",
         bed: "2",
-        durationOfStay: "48 hours",
+        durationOfStay: "36 hours",
         medicalCondition: "heart attack",
-        medicationsPrescribed: "aspirin",
-        methodOfAdministration: "oral",
-        dosage: "50mg",
-        frequency: "12 hours",
-        startDate: "1/10/2023",
-        endDate: "1/15/2023",
+        dateOfDischarge: "2023/10/01",
+        medicationsPrescribed: [
+            {
+                medicationName: "aspirin",
+                methodOfAdministration: "oral",
+                dosage: "50mg",
+                frequency: "12 hours",
+                startDate: "1/10/2023",
+                endDate: "1/15/2023",
+            }
+        ],
     }
-
 ]
 
 export default patientFiles;

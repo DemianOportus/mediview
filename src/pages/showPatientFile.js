@@ -20,27 +20,52 @@ function ShowPatientFile() {
                 </button>
             </div>
             <div className="lg:grid lg:grid-cols-2">
-            
+                <div className="bg-[#F5F5F5] m-2 p-4">
+                  <h2>General information</h2>
+                  <p>Name: {patientFile.name}</p>
+                  <p>Address: {patientFile.address}</p>
+                  <p>Phone number: {patientFile.phoneNumber}</p>
+                  <p>Date of birth: {patientFile.dateOfBirth}</p>
+                  <p>Gender: {patientFile.gender}</p>
+                  <p>Patient has a doctor: {patientFile.hasADoctorYesOrNo}</p>
+                  <p>Doctor's email: {patientFile.doctorEmail}</p>
+                  <p>Insurance number: {patientFile.insuranceNumber}</p>
+                </div>
                 <div className="bg-[#F5F5F5] m-2 p-4">
                     <h2>Admission details</h2>
+                    <p>Date of admission: {patientFile.dateOfAdmission}</p>
                     <p>Division: {patientFile.division}</p>
                     <p>Room: {patientFile.room}</p>
                     <p>Bed: {patientFile.bed}</p>
+                    <Link to={`/admit-patient/${patientFile.id}`}>
+                      <button 
+                          className="grid-row-end bg-[#3D6189] w-[180px] text-white py-[6px] mt-6 mb-5">
+                          Admit patient
+                      </button>
+                    </Link>
                 </div>
                 <div className="bg-[#F5F5F5] m-2 p-4">
                     <h2>Discharge info</h2>
+                    <p>Date of discharge: {patientFile.dateOfDischarge}</p>
                     <p>Duration of stay: {patientFile.durationOfStay}</p>
                     <p>Medical condition: {patientFile.medicalCondition}</p>
-                    <p>Medications prescribed: {patientFile.medicationsPrescribed}</p>
                 </div>
                 <div className="bg-[#F5F5F5] m-2 p-4">
                     <h2>Prescriptions</h2>
-                    <p>{patientFile.medicationsPrescribed}:</p>
-                    <li>Method of administration: {patientFile.methodOfAdministration}</li>
-                    <li>Dosage: {patientFile.dosage}</li>
-                    <li>Frequency: {patientFile.frequency}</li>
-                    <li>Start date: {patientFile.startDate}</li>
-                    <li>End date: {patientFile.endDate}</li>
+                    {patientFile.medicationsPrescribed.length > 0 ? (
+                        patientFile.medicationsPrescribed.map((prescription, index) => (
+                            <div className="mb-4" key={index}>
+                                <p>Medication name: {prescription.medicationName}</p>
+                                <p>Method of administration: {prescription.methodOfAdministration}</p>
+                                <p>Dosage: {prescription.dosage}</p>
+                                <p>Frequency: {prescription.frequency}</p>
+                                <p>Start date: {prescription.startDate}</p>
+                                <p>End date: {prescription.endDate}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No medications prescribed</p>
+                    )}
                     <Link to={`/add-prescription/${patientFile.id}`}>
                       <button 
                           className="grid-row-end bg-[#3D6189] w-[220px] text-white py-[6px] mt-6 mb-5">

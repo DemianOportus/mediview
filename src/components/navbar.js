@@ -12,7 +12,7 @@ function Navbar(){
                             Add a patient +
                         </button>
                     </Link>
-                    <a href="/login"><i class="fa-solid fa-user fa-2xl"></i></a>
+                    <a href="/login"><i className="fa-solid fa-user fa-2xl"></i></a>
                 </div>
             </div>
         </div>

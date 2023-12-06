@@ -8,6 +8,7 @@ import AddPatient from "./pages/addPatient";
 import ShowPatientFile from "./pages/showPatientFile";
 import Navbar from "./components/navbar";
 import AddPrescription from "./pages/addPrescription";
+import AdmitPatient from "./pages/admitPatient";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="search" element={<Search />} />
         <Route path="add-a-patient" element={<AddPatient />} />
+        <Route path="admit-patient/:id" element={<AdmitPatient />} />
         <Route path="show-patient-file/:id" element={
           <div>
             <Navbar/>
