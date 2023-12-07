@@ -2,9 +2,15 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import patientFiles from "../components/patientFiles";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ShowPatientFile() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const handleAdmitPatient = () => {
+    // This will navigate to the admit-patient route and pass the patient's ID
+    navigate(`/admit-patient/${patientFile.id}`);
+  };
 
   const patientFile = patientFiles.find((file) => file.id === parseInt(id));
 
@@ -26,6 +32,7 @@ function ShowPatientFile() {
           <div className="lg:grid lg:grid-cols-2">
             <div className="bg-[#F5F5F5] m-2 p-4">
               <h2>General information</h2>
+              <p>id: {patientFile.id}</p>
               <p>Name: {patientFile.name}</p>
               <p>Address: {patientFile.address}</p>
               <p>Phone number: {patientFile.phoneNumber}</p>
@@ -41,11 +48,13 @@ function ShowPatientFile() {
               <p>Division: {patientFile.division}</p>
               <p>Room: {patientFile.room}</p>
               <p>Bed: {patientFile.bed}</p>
-              <Link to={`/admit-patient/${patientFile.id}`}>
-                <button className="grid-row-end bg-[#3D6189] w-[180px] text-white py-[6px] mt-6 mb-5">
-                  Admit patient
-                </button>
-              </Link>
+
+              <button
+                className="grid-row-end bg-[#3D6189] w-[180px] text-white py-[6px] mt-6 mb-5"
+                onClick={handleAdmitPatient}
+              >
+                Admit patient
+              </button>
             </div>
             <div className="bg-[#F5F5F5] m-2 p-4">
               <h2>Discharge info</h2>
