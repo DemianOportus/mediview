@@ -8,6 +8,8 @@ function ShowPatientFile() {
 
   const patientFile = patientFiles.find((file) => file.id === parseInt(id));
 
+  const isDischargeButtonVisible = patientFile && patientFile.dateOfDischarge === '';
+
   return (
     <div>
       {patientFile ? (
@@ -49,6 +51,14 @@ function ShowPatientFile() {
                     <p>Date of discharge: {patientFile.dateOfDischarge}</p>
                     <p>Duration of stay: {patientFile.durationOfStay}</p>
                     <p>Medical condition: {patientFile.medicalCondition}</p>
+                    {isDischargeButtonVisible && (
+                      <Link to="/discharge">
+                        <button 
+                          className="bg-[#3D6189] w-[200px] text-white py-[6px] mt-6 mb-5">
+                          Discharge Patient
+                        </button>
+                      </Link>
+                    )}
                 </div>
                 <div className="bg-[#F5F5F5] m-2 p-4">
                     <h2>Prescriptions</h2>

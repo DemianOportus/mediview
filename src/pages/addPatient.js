@@ -81,7 +81,7 @@ function AddPatient() {
         addPatientToFile();
 
         const addedPatient = patientFiles[patientFiles.length - 1];
-        navigate(/show-patient-file/${addedPatient.id});
+        navigate(`/show-patient-file/${addedPatient.id}`);
     };
 
 

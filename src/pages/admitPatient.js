@@ -14,7 +14,7 @@ function AdmitPatient() {
         const occupiedBeds = {};
         patientFiles.forEach((patient) => {
             if (patient.dateOfDischarge === "") {
-                const key = ${patient.division}-${patient.room}-${patient.bed};
+                const key = `${patient.division}-${patient.room}-${patient.bed}`;
                 occupiedBeds[key] = true;
             }
         });
@@ -41,7 +41,7 @@ function AdmitPatient() {
                 </div>
             </form>
             <h2 className="text-center mt-5">Available rooms and beds</h2>
-            <p className="mb-5 text-[15px]">Available beds are black. Unavailable beds are red.</p>
+            <p className="mb-5 text-[15px]">*Available beds are black. Unavailable beds are red.*</p>
             <table className="m-auto">
                 <thead>
                     <tr>
@@ -59,7 +59,7 @@ function AdmitPatient() {
                                     <td>{room}</td>
                                     <td>
                                         {[1, 2, 3].map((bed) => {
-                                            const bedKey = ${divisionRooms.division}-${room}-${bed};
+                                            const bedKey = `${divisionRooms.division}-${room}-${bed}`;
                                             const isOccupied = occupiedBeds[bedKey];
 
                                             return (
